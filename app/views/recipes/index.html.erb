@@ -1,9 +1,34 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
-<p>Recipes go here sooner or later</p>
+<!--<h1>Recipes#index</h1>
+<p>Find me in app/views/recipes/index.html.erb</p>-->
+<h1>Recipe list</h1>
+
+<table>
+
+<% @recipes.each do |recipe|  %>
+
+  <tr>
+    <td>
+	  <p><%= link_to recipe.title, recipe %></p>
+	  <p><i>
+	    <% if recipe.description.length > 30 %>
+		  <%= recipe.description[0..30] %> ...
+		<% else %>  
+		  <%= recipe.description %>
+		<% end %>
+	  </i></p>
+	</td>
+  </tr>
+
+<% end %>
+
+<% if @recipes.size == 0 %>
+  <tr>
+    <td>
+	  <p>No recipes found!</p>
+	</td>
+  </tr>
+<% end %>
 
 
-<p> <%= @recipes.first.title %> </p>
-<p> <%= @recipes.first.description %> </p>
-<p> <%= @recipes.first.ingredient_list %> </p>
-<p> <%= @recipes.first.instruction %> </p>
+</table>
+
