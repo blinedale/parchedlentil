@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :recipes
+
   root 'recipes#index'
 
-  get 'recipes' => 'recipes#index'
+ # get 'recipes' => 'recipes#index'
 
-  get 'recipes/:id' => 'recipes#show', as: 'recipe'
+ # get 'recipes/:id' => 'recipes#show', as: 'recipe'
 
-#  get 'recipes/create'
+ # get 'recipes/create' => 'recipes#create'
 
 #  get 'recipes/edit'
 
