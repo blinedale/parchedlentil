@@ -8,11 +8,17 @@ class RecipesController < ApplicationController
   end
   
   def new
+    
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-	@recipe.save
+	
+	if !@recipe.save
+	  render 'new'
+	  return
+	end
+	# funkar detta? utropstecken samt return
 	redirect_to recipe_path(@recipe)
   end
 

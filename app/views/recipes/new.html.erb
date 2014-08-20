@@ -2,6 +2,20 @@
 <p>Find me in app/views/recipes/new.html.erb</p>
 
 <%= form_for :recipe, url: recipes_path do |f| %>
+
+  <% if @recipe != nil && @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited
+      the recipe from being saved:</h2>
+    <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
